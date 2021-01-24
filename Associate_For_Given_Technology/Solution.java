@@ -1,5 +1,5 @@
-import java.util.Arrays;
-import java.util.Scanner;
+import java.util.*;
+
 public class Solution {
     public static void main(String[] args) {
         Associate[] associates = new Associate[5];
@@ -15,14 +15,13 @@ public class Solution {
     }
 
     public static Associate[] associatesForGivenTechnology(Associate[] associates, String searchTechnology) {
-        Associate[] refined = new Associate[0];
+        ArrayList<Associate> refined = new ArrayList<Associate>();
         for(int i=0;i<associates.length;i++) {
             if(associates[i].getTechnology().equals(searchTechnology) && associates[i].getExperienceInYears()%5==0){
-                refined=Arrays.copyOf(refined,refined.length+1);
-                refined[refined.length-1] = associates[i];
+                refined.add(associates[i]);
             }
         }
-        return refined;
+        return refined.toArray(new Associate[refined.size()]);
     }
 }
 
